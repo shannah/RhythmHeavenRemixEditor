@@ -285,6 +285,7 @@ class AdvancedOptionsScreen(main: RHRE3Application) : ToolboksScreen<RHRE3Applic
                               screenHeight = buttonHeight)
         }
         centre.elements += pitchStyleButton
+
         // Exploding entities
         explodingEntitiesButton = TrueCheckbox(palette, centre, centre).apply {
             this.leftClickAction = { _, _ ->
@@ -431,7 +432,7 @@ class AdvancedOptionsScreen(main: RHRE3Application) : ToolboksScreen<RHRE3Applic
             "[YELLOW]Caution:[] modding info for this game\nmay only be partially complete and\nsubject to change."}[]\n"
         moddingGameLabel.text = "1 ♩ (quarter note) = ${game.beatsToTickflowString(1f)}${if (game.tickflowUnitName.isEmpty()) " rest units" else ""}"
 
-        (pitchStyleButton.labels.first() as TextLabel).text = "Pitch note style: [LIGHT_GRAY]${Semitones.pitchStyle.name.toLowerCase(Locale.ROOT).capitalize()} (ex: ${Semitones.pitchStyle.example})[]"
+        (pitchStyleButton.labels.first() as TextLabel).text = "Pitch note style: [LIGHT_GRAY]${Semitones.pitchStyle.displayName} (ex: ${Semitones.pitchStyle.example})[]"
     }
 
     override fun tickUpdate() {
