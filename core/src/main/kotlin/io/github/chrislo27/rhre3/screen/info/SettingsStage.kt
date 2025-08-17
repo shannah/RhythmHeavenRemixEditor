@@ -11,7 +11,6 @@ import com.badlogic.gdx.utils.Align
 import io.github.chrislo27.rhre3.PreferenceKeys
 import io.github.chrislo27.rhre3.RHRE3Application
 import io.github.chrislo27.rhre3.VersionHistory
-import io.github.chrislo27.rhre3.discord.DiscordHelper
 import io.github.chrislo27.rhre3.editor.CameraBehaviour
 import io.github.chrislo27.rhre3.editor.Editor
 import io.github.chrislo27.rhre3.soundsystem.*
@@ -318,7 +317,6 @@ class SettingsStage(parent: UIElement<InfoScreen>?, camera: OrthographicCamera, 
                 super.onLeftClick(xPercent, yPercent)
                 preferences.putBoolean(PreferenceKeys.SETTINGS_DISCORD_RPC_ENABLED, checked).flush()
                 didChangeSettings = true
-                DiscordHelper.enabled = checked
             }
 
             override fun computeTextX(): Float {

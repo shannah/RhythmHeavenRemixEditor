@@ -10,8 +10,6 @@ import com.badlogic.gdx.utils.Align
 import io.github.chrislo27.rhre3.PreferenceKeys
 import io.github.chrislo27.rhre3.RHRE3Application
 import io.github.chrislo27.rhre3.analytics.AnalyticsHandler
-import io.github.chrislo27.rhre3.discord.DiscordHelper
-import io.github.chrislo27.rhre3.discord.PresenceState
 import io.github.chrislo27.rhre3.news.Article
 import io.github.chrislo27.rhre3.news.Articles
 import io.github.chrislo27.rhre3.news.ThumbnailFetcher
@@ -226,7 +224,6 @@ class NewsScreen(main: RHRE3Application) : ToolboksScreen<RHRE3Application, News
             state = ARTICLES
         }
 
-        DiscordHelper.updatePresence(PresenceState.ViewingNews)
         AnalyticsHandler.track("Enter News Screen", linkedMapOf("currentFetchState" to state.toString(), "hadNewNews" to hasNewNews))
     }
 

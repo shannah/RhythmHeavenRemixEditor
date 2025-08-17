@@ -16,7 +16,7 @@ import java.io.File
 object DesktopLauncher {
     
     private fun printHelp(jCommander: JCommander) {
-        println("${RHRE3.TITLE} ${RHRE3.VERSION}\n${RHRE3.GITHUB}\n\n${StringBuilder().apply { jCommander.usage(this) }}")
+        println("${RHRE3.TITLE} ${RHRE3.VERSION}\n${RHRE3.GITHUB}\n\n${StringBuilder().apply { jCommander.usage() }}")
     }
     
     @JvmStatic

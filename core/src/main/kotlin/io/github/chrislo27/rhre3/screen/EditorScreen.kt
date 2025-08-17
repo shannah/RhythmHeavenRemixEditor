@@ -7,8 +7,6 @@ import io.github.chrislo27.rhre3.PreferenceKeys
 import io.github.chrislo27.rhre3.RHRE3Application
 import io.github.chrislo27.rhre3.RemixRecovery
 import io.github.chrislo27.rhre3.analytics.AnalyticsHandler
-import io.github.chrislo27.rhre3.discord.DiscordHelper
-import io.github.chrislo27.rhre3.discord.PresenceState
 import io.github.chrislo27.rhre3.editor.Editor
 import io.github.chrislo27.rhre3.editor.stage.EditorStage
 import io.github.chrislo27.rhre3.editor.stage.Java32BitWarningStage
@@ -52,7 +50,6 @@ class EditorScreen(main: RHRE3Application) : ToolboksScreen<RHRE3Application, Ed
             stage.updatePositions()
         }
 
-        DiscordHelper.updatePresence(PresenceState.InEditor)
         refreshPresence = presenceCycle
 
         editor.updateMessageLabel()
@@ -78,7 +75,6 @@ class EditorScreen(main: RHRE3Application) : ToolboksScreen<RHRE3Application, Ed
         if (refreshPresence <= 0) {
             refreshPresence = presenceCycle
             if (!stage.playalongStage.visible && !stage.presentationModeStage.visible && !(editor.remix.playState != PlayState.STOPPED && editor.remix.midiInstruments > 0)) {
-                DiscordHelper.updatePresence(PresenceState.InEditor)
             }
         }
     }

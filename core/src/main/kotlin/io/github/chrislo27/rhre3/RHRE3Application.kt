@@ -14,8 +14,6 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator
 import com.badlogic.gdx.math.Matrix4
 import com.badlogic.gdx.utils.Align
 import io.github.chrislo27.rhre3.analytics.AnalyticsHandler
-import io.github.chrislo27.rhre3.discord.DiscordHelper
-import io.github.chrislo27.rhre3.discord.PresenceState
 import io.github.chrislo27.rhre3.init.DefaultAssetLoader
 import io.github.chrislo27.rhre3.lc.LC
 import io.github.chrislo27.rhre3.midi.MidiHandler
@@ -282,8 +280,6 @@ class RHRE3Application(logger: Logger, logToFile: File?)
         GlobalScope.launch {
             Toolboks.LOGGER.info("Starting Discord RPC")
             val nano = measureNanoTime {
-                DiscordHelper.init(enabled = discordRpcEnabled)
-                DiscordHelper.updatePresence(PresenceState.Loading)
             }
             Toolboks.LOGGER.info("Discord RPC started successfully in ${nano / 1000000.0} ms")
         }
@@ -353,8 +349,6 @@ class RHRE3Application(logger: Logger, logToFile: File?)
                     val req = httpClient.prepareGet("https://api.rhre.dev:10443/rhre3/live")
                             .addHeader("User-Agent", "RHRE ${RHRE3.VERSION}")
                             .addHeader("X-Analytics-ID", AnalyticsHandler.getUUID())
-                            .addHeader("X-D-ID", DiscordHelper.currentUser?.userId ?: "null")
-                            .addHeader("X-D-U", DiscordHelper.currentUser?.let { "${it.username}#${it.discriminator}" } ?: "null")
                             .execute().get()
                     
                     if (req.statusCode == 200) {

@@ -12,8 +12,6 @@ import com.badlogic.gdx.utils.Align
 import io.github.chrislo27.rhre3.RHRE3
 import io.github.chrislo27.rhre3.RHRE3Application
 import io.github.chrislo27.rhre3.credits.Credits
-import io.github.chrislo27.rhre3.discord.DiscordHelper
-import io.github.chrislo27.rhre3.discord.PresenceState
 import io.github.chrislo27.rhre3.stage.GenericStage
 import io.github.chrislo27.toolboks.ToolboksScreen
 import io.github.chrislo27.toolboks.i18n.Localization
@@ -142,7 +140,6 @@ class CreditsScreen(main: RHRE3Application)
         super.show()
 
         createText()
-        DiscordHelper.updatePresence(PresenceState.ViewingCredits)
     }
 
     override fun resize(width: Int, height: Int) {

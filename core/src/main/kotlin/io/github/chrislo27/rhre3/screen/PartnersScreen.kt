@@ -7,8 +7,6 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion
 import io.github.chrislo27.rhre3.PreferenceKeys
 import io.github.chrislo27.rhre3.RHRE3Application
 import io.github.chrislo27.rhre3.analytics.AnalyticsHandler
-import io.github.chrislo27.rhre3.discord.DiscordHelper
-import io.github.chrislo27.rhre3.discord.PresenceState
 import io.github.chrislo27.rhre3.news.Article
 import io.github.chrislo27.rhre3.news.ThumbnailFetcher
 import io.github.chrislo27.rhre3.stage.GenericStage
@@ -109,7 +107,6 @@ class PartnersScreen(main: RHRE3Application) : ToolboksScreen<RHRE3Application, 
     override fun show() {
         super.show()
         randomizePartners()
-        DiscordHelper.updatePresence(PresenceState.ViewingPartners)
         main.preferences.putInteger(PreferenceKeys.VIEWED_PARTNERS_VERSION, PARTNERS_VERSION).flush()
         AnalyticsHandler.track("View All Partners", mapOf("partnersVersion" to "$PARTNERS_VERSION"))
     }

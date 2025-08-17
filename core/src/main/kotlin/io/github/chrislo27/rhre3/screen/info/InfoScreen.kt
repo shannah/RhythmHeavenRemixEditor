@@ -17,8 +17,6 @@ import io.github.chrislo27.rhre3.RHRE3Application
 import io.github.chrislo27.rhre3.VersionHistory
 import io.github.chrislo27.rhre3.analytics.AnalyticsHandler
 import io.github.chrislo27.rhre3.credits.CreditsGame
-import io.github.chrislo27.rhre3.discord.DiscordHelper
-import io.github.chrislo27.rhre3.discord.PresenceState
 import io.github.chrislo27.rhre3.editor.CameraBehaviour
 import io.github.chrislo27.rhre3.editor.Editor
 import io.github.chrislo27.rhre3.screen.*
@@ -353,7 +351,6 @@ class InfoScreen(main: RHRE3Application)
         infoStage.show()
         extrasStage.show()
         settingsStage.show()
-        DiscordHelper.updatePresence(PresenceState.InSettings)
         updateSeePartners()
     }
 

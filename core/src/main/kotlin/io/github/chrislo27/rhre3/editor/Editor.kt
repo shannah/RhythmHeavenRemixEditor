@@ -18,8 +18,6 @@ import com.fasterxml.jackson.core.JsonParseException
 import io.github.chrislo27.rhre3.PreferenceKeys
 import io.github.chrislo27.rhre3.RHRE3
 import io.github.chrislo27.rhre3.RHRE3Application
-import io.github.chrislo27.rhre3.discord.DiscordHelper
-import io.github.chrislo27.rhre3.discord.PresenceState
 import io.github.chrislo27.rhre3.editor.CameraBehaviour.FOLLOW_PLAYBACK
 import io.github.chrislo27.rhre3.editor.CameraBehaviour.PAN_OVER_SMOOTH
 import io.github.chrislo27.rhre3.editor.ClickOccupation.TrackerResize
@@ -174,12 +172,10 @@ class Editor(val main: RHRE3Application, stageCamera: OrthographicCamera, attach
                     when (new) {
                         STOPPED -> {
                             resetAllSongSubtitles()
-                            DiscordHelper.updatePresence(PresenceState.InEditor)
                             stage.patternPreviewButton.visible = editor.pickerSelection.filter != editor.stage.storedPatternsFilter
                             stage.patternPreviewButton.stop()
                         }
                         PAUSED -> {
-                            DiscordHelper.updatePresence(PresenceState.InEditor)
                             stage.patternPreviewButton.visible = false
                             stage.patternPreviewButton.stop()
                         }
@@ -199,9 +195,7 @@ class Editor(val main: RHRE3Application, stageCamera: OrthographicCamera, attach
                             val durationSeconds = tempos.beatsToSeconds(lastPoint) - seconds
                             if (durationSeconds > 5f) {
                                 if (midiInstruments > 0) {
-                                    DiscordHelper.updatePresence(PresenceState.Elapsable.PlayingMidi(durationSeconds))
                                 } else if (stage.playalongStage.visible) {
-                                    DiscordHelper.updatePresence(PresenceState.PlayingAlong)
                                 }
                             }
 

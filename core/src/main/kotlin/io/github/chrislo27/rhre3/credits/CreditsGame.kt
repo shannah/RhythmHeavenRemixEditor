@@ -14,8 +14,6 @@ import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.utils.Align
 import io.github.chrislo27.rhre3.RHRE3
 import io.github.chrislo27.rhre3.RHRE3Application
-import io.github.chrislo27.rhre3.discord.DiscordHelper
-import io.github.chrislo27.rhre3.discord.PresenceState
 import io.github.chrislo27.rhre3.git.GitHelper
 import io.github.chrislo27.rhre3.screen.HidesVersionText
 import io.github.chrislo27.rhre3.util.TempoUtils
@@ -661,7 +659,6 @@ class CreditsGame(main: RHRE3Application, val speedMultiplier: Float = 1f)
 
     override fun showTransition() {
         super.showTransition()
-        DiscordHelper.updatePresence(if (speedMultiplier > 1f) PresenceState.ViewingCreditsTempoUp else PresenceState.ViewingCredits)
     }
 
     override fun hide() {

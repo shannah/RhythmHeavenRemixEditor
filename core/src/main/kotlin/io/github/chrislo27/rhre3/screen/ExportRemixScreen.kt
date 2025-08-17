@@ -18,8 +18,6 @@ import io.github.chrislo27.rhre3.PreferenceKeys
 import io.github.chrislo27.rhre3.RHRE3
 import io.github.chrislo27.rhre3.RHRE3Application
 import io.github.chrislo27.rhre3.analytics.AnalyticsHandler
-import io.github.chrislo27.rhre3.discord.DiscordHelper
-import io.github.chrislo27.rhre3.discord.PresenceState
 import io.github.chrislo27.rhre3.editor.Editor
 import io.github.chrislo27.rhre3.entity.model.ISoundDependent
 import io.github.chrislo27.rhre3.entity.model.special.MusicDistortEntity
@@ -490,7 +488,6 @@ class ExportRemixScreen(main: RHRE3Application)
                         val newInitialDirectory = if (!file.isDirectory) file.parentFile else file
                         persistDirectory(main, PreferenceKeys.FILE_CHOOSER_EXPORT, newInitialDirectory)
                         GlobalScope.launch {
-                            DiscordHelper.updatePresence(PresenceState.Exporting)
                             try {
                                 val correctFile = if (file.extension.toLowerCase(Locale.ROOT) !in ExportFileType.EXTENSIONS)
                                     file.parentFile.resolve("${file.name}.mp3")

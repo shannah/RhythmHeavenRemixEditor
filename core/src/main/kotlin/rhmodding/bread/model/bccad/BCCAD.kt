@@ -28,8 +28,8 @@ class BCCAD : IDataModel {
                                 stretchX = bytes.float
                                 stretchY = bytes.float
                                 rotation = bytes.float
-                                flipX = bytes.get() != 0.toByte()
-                                flipY = bytes.get() != 0.toByte()
+                                flipX = bytes.get() != 0.toInt().toByte()
+                                flipY = bytes.get() != 0.toInt().toByte()
                                 multColor = Color((bytes.get().toInt() and 0xFF) / 255f, (bytes.get().toInt() and 0xFF) / 255f, (bytes.get().toInt() and 0xFF) / 255f, 1f)
                                 screenColor = Color((bytes.get().toInt() and 0xFF) / 255f, (bytes.get().toInt() and 0xFF) / 255f, (bytes.get().toInt() and 0xFF) / 255f,1f)
                                 opacity = bytes.get().toUByte()
@@ -123,19 +123,19 @@ class BCCAD : IDataModel {
                             .putFloat(stretchX)
                             .putFloat(stretchY)
                             .putFloat(rotation)
-                            .put((if (flipX) 1 else 0).toByte())
-                            .put((if (flipY) 1 else 0).toByte())
-                            .put((multColor.r * 255).toByte())
-                            .put((multColor.g * 255).toByte())
-                            .put((multColor.b * 255).toByte())
-                            .put((screenColor.r * 255).toByte())
-                            .put((screenColor.g * 255).toByte())
-                            .put((screenColor.b * 255).toByte())
-                            .put(opacity.toByte())
+                            .put((if (flipX) 1 else 0).toInt().toByte())
+                            .put((if (flipY) 1 else 0).toInt().toByte())
+                            .put((multColor.r * 255).toInt().toByte())
+                            .put((multColor.g * 255).toInt().toByte())
+                            .put((multColor.b * 255).toInt().toByte())
+                            .put((screenColor.r * 255).toInt().toByte())
+                            .put((screenColor.g * 255).toInt().toByte())
+                            .put((screenColor.b * 255).toInt().toByte())
+                            .put(opacity.toInt().toByte())
                     repeat(12) {
                         bytes.put(unknownData[it])
                     }
-                    bytes.put(designation.toByte())
+                    bytes.put(designation.toInt().toByte())
                             .putShort(unknown)
                             .putFloat(tlDepth)
                             .putFloat(blDepth)
@@ -148,9 +148,9 @@ class BCCAD : IDataModel {
         bytes.putInt(animations.size)
         animations.forEach { a ->
             with(a) {
-                bytes.put(name.length.toByte())
-                name.toCharArray().forEach { b -> bytes.put(b.toByte()) }
-                repeat(4 - ((name.length + 1) % 4)) { bytes.put(0.toByte()) }
+                bytes.put(name.length.toInt().toByte())
+                name.toCharArray().forEach { b -> bytes.put(b.toInt().toByte()) }
+                repeat(4 - ((name.length + 1) % 4)) { bytes.put(0.toInt().toByte()) }
                 
                 bytes.putInt(interpolationInt)
                         .putInt(steps.size)
@@ -165,10 +165,10 @@ class BCCAD : IDataModel {
                                 .putFloat(stretchX)
                                 .putFloat(stretchY)
                                 .putFloat(rotation)
-                                .put((color.r * 255).toByte())
-                                .put((color.g * 255).toByte())
-                                .put((color.b * 255).toByte())
-                                .put(0.toByte())
+                                .put((color.r * 255).toInt().toByte())
+                                .put((color.g * 255).toInt().toByte())
+                                .put((color.b * 255).toInt().toByte())
+                                .put(0.toInt().toByte())
                                 .put(unknown1)
                                 .put(unknown2)
                                 .putShort(opacity.toShort())
@@ -176,7 +176,7 @@ class BCCAD : IDataModel {
                 }
             }
         }
-        bytes.put(0.toByte())
+        bytes.put(0.toInt().toByte())
         return bytes
     }
     
