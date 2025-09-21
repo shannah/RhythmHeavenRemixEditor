@@ -9,7 +9,7 @@
   "jdeploy": {
     "jdk": false,
     "javaVersion": "11",
-    "jar": "desktop/build/libs/RHRE-3.20.7.jar",
+    "jar": "desktop/build/libs/RHRE-3.20.7-all.jar",
     "javafx": false,
     "title": "Rhythm Heaven Remix Editor 3",
     "args": ["-Xmx1024m"]
