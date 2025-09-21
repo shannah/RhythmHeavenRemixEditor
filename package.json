@@ -1,0 +1,28 @@
+{
+  "bin": {"rhythm-heaven-remix-editor-3": "jdeploy-bundle/jdeploy.js"},
+  "author": "chrislo27",
+  "description": "Rhythm Heaven Remix Editor 3 - A music editor for Rhythm Heaven remixes",
+  "main": "index.js",
+  "preferGlobal": true,
+  "repository": "https://github.com/shannah/RhythmHeavenRemixEditor",
+  "version": "3.20.7",
+  "jdeploy": {
+    "jdk": false,
+    "javaVersion": "11",
+    "jar": "desktop/build/libs/RHRE-3.20.7.jar",
+    "javafx": false,
+    "title": "Rhythm Heaven Remix Editor 3",
+    "args": ["-Xmx1024m"]
+  },
+  "dependencies": {
+    "command-exists-promise": "^2.0.2",
+    "node-fetch": "2.6.7",
+    "tar": "^4.4.8",
+    "yauzl": "^2.10.0",
+    "shelljs": "^0.8.4"
+  },
+  "license": "GPL-3.0",
+  "name": "rhythm-heaven-remix-editor-3",
+  "files": ["jdeploy-bundle"],
+  "scripts": {"test": "echo \"Error: no test specified\" && exit 1"}
+}
